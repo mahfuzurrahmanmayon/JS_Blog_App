@@ -2,3 +2,101 @@ header{
     display: flex;
     justify-content: center;
 }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1em;
+}
+
+.postEditor {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    background-color: #59485a;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #59485a;
+}
+#posts{
+    max-width: 800px;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+.post {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+.post h2 {
+    color: #000;
+    font-size: 20px;
+}
+.post ul {
+    margin: 0;
+    padding: 0;
+}
+.post ul li {
+    list-style: none;
+    display: inline-block;
+}
+.post ul li a {
+    color: #000;
+    text-decoration: none;
+}
+.post ul {
+    margin: 0;
+    padding: 0;
+}
+
+.post ul li {
+    list-style: none;
+    display: inline-block;
+}
+
+.post ul li a {
+    color: #000;
+    text-decoration: none;
+}
+
+.post a.btn {
+    background: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: 1px solid rgba(4,4,4,.1);
+    border-radius: 5px;
+}
