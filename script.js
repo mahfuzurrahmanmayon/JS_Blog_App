@@ -3,6 +3,7 @@ const form = document.getElementById("postForm")
 
 // An empty ARRAY
 const postArr = [];
+let bookMarkArr = []
 
 // Create dynamic post and dynamically create a array
 function createPost() {
@@ -10,7 +11,6 @@ function createPost() {
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
 
-    localStorage.setItem("myObj", JSON.stringify({title: title,content: content}))
 
     // if the user no title and no content provide Alert him!
     if(!title && !content){
@@ -21,7 +21,9 @@ function createPost() {
     // Create a Array
     const newPost = {title,content}
     postArr.push(newPost)
-    console.log(postArr)
+    
+    // Update localStorage with the new array
+    localStorage.setItem("posts", JSON.stringify(postArr));
 
     // Create dynamically HTML
     const postDiv = document.createElement('div');
@@ -34,7 +36,7 @@ function createPost() {
                 <a href="#" class="btn btn-more readMore">Read More</a>
             </li>
             <li>
-                <a href="#" class="btn btn-more" >Add To Bookmark</a>
+                <a href="#" class="btn btn-more bookmarkFunc" >Add To Bookmark</a>
             </li>
         </ul>
     `;
@@ -43,8 +45,15 @@ function createPost() {
 
     // Call clearForm()
     clearForm()
-}
 
+    // When click bookmark button the post is add in the post
+    const addBookmarkBtn = postDiv.querySelector(".bookmarkFunc");
+    addBookmarkBtn.addEventListener("click", function() {
+        bookMark(newPost);
+    });
+
+
+}
 // Clear Title and Content Value after one blog
 function clearForm() {
     document.getElementById('title').value = '';
@@ -67,3 +76,23 @@ form.addEventListener('submit', function (e) {
     window.location.href = "read.html";
 });
 
+
+// Bookmark functionality
+
+function bookMark(bookArr) {
+    const bookmark = document.querySelector(".bookmark");
+    const bookmarkDiv = document.createElement("div");
+    bookmarkDiv.className = "bookmarkDiv";
+
+    const index = bookMarkArr.length + 1;
+
+    bookmarkDiv.innerHTML = `
+      <span class="number">${index}</span>
+      <h2><a href="#">${bookArr.title}</a></h2>
+      <p>${bookArr.content}</p>
+    `;
+  
+    bookmark.appendChild(bookmarkDiv);
+    // Add the bookmarked post to bookMarkArr
+    bookMarkArr.push(bookArr);
+}
