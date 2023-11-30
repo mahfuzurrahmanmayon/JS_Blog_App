@@ -48,7 +48,7 @@ button {
 button:hover {
     background-color: #59485a;
 }
-#posts{
+#posts,#blog-container{
     max-width: 800px;
     margin: 20px;
     display: grid;
@@ -138,4 +138,8 @@ span.number {
     text-align: center;
     top: 0;
     line-height: 25px;
+}
+.btn-remove-bookmarks {
+    background-color: #000;
+    color: #fff;
 }

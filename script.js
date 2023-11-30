@@ -5,54 +5,59 @@ const form = document.getElementById("postForm")
 
 const postArr = [
     {
-      "title": "Object 1",
-      "content": "This is the content for Object 1.",
+      "title": "How to declare a variable in JavaScript?",
+      "content": "I'm new to JavaScript and would like to know the correct syntax for declaring variables. Can someone provide an example?"
     },
     {
-      "title": "Object 2",
-      "content": "This is the content for Object 2.",
-      "isBookmarked": false
+      "title": "What is the purpose of the 'use strict' directive?",
+      "content": "I often see the 'use strict' directive at the beginning of JavaScript files. What does it do, and when should I use it in my code?"
     },
     {
-      "title": "Object 3",
-      "content": "This is the content for Object 3.",
+      "title": "Explain the difference between 'let', 'const', and 'var' in JavaScript.",
+      "content": "I'm confused about when to use 'let', 'const', and 'var' for variable declarations in JavaScript. Can someone clarify their differences and best use cases?"
     },
     {
-      "title": "Object 4",
-      "content": "This is the content for Object 4.",
-      "isBookmarked": false
+      "title": "How does asynchronous programming work in JavaScript?",
+      "content": "I've heard about asynchronous programming and the event loop in JavaScript. Could someone provide a simple explanation and example of how asynchronous code execution works?"
     },
     {
-      "title": "Object 5",
-      "content": "This is the content for Object 5.",
+      "title": "What are arrow functions in JavaScript?",
+      "content": "I've seen arrow functions in JavaScript code, and they look different from regular functions. What are arrow functions, and how do they differ from traditional function expressions?"
     }
-];
+]
+  
 
+function demoBlog(post){
+    const blogContainer = document.getElementById('blog-container');
 
+    // Loop through the posts array and create HTML elements for each post
+    postArr.forEach(post => {
+
+    // Create a div for each post
+    const postDiv = document.createElement('div');
+    postDiv.className = 'post';
+    postDiv.innerHTML = `
+        <h2>${post.title}</h2>
+        <p id="content">${sliceText(post.content)}</p>
+        <ul>
+            <li>
+                <a href="#" class="btn btn-more readMore">Read More</a>
+            </li>
+            <li>
+                <a href="#" class="btn btn-more bookmarkFunc " >Add To Bookmark</a>
+            </li>
+        </ul>
+    `;
+
+    blogContainer.appendChild(postDiv);
+});
+
+}
+
+demoBlog()
 
 const bookMarkArr = [
-    {
-        "title": "Object 1",
-        "content": "This is the content for Object 1.",
-      },
-      {
-        "title": "Object 2",
-        "content": "This is the content for Object 2.",
-        "isBookmarked": false
-      },
-      {
-        "title": "Object 3",
-        "content": "This is the content for Object 3.",
-      },
-      {
-        "title": "Object 4",
-        "content": "This is the content for Object 4.",
-        "isBookmarked": false
-      },
-      {
-        "title": "Object 5",
-        "content": "This is the content for Object 5.",
-      }
+    
 ]
 
 // const postArr = JSON.parse(localStorage.getItem("posts")) || [];
@@ -73,9 +78,12 @@ function createPost() {
         return 0;
     }
 
+    
+
     // Create a Array
     const newPost = {title,content}
     postArr.push(newPost)
+
     
     // Update localStorage with the new array
     localStorage.setItem("posts", JSON.stringify(postArr));
@@ -121,7 +129,8 @@ function createPost() {
                 bookMarkArr.splice(indexOfClicked, 1);
             }
             addBookmarkBtn.textContent = "Add To Bookmark"; // Change button text
-
+            addBookmarkBtn.style.backgroundColor = "#fff";
+            addBookmarkBtn.style.color = "#000";
             // Remove the bookmarked post from the bookmark sidebar
             console.log(newPost)
             removeBookmark(newPost.title);
@@ -129,6 +138,8 @@ function createPost() {
             // Add to bookmarks
             bookMark(newPost);
             addBookmarkBtn.textContent = "Remove from bookmark"; // Change button text
+            addBookmarkBtn.style.backgroundColor = "#000";
+            addBookmarkBtn.style.color = "#fff";
         }
 
 
